@@ -457,38 +457,8 @@
               "[TEST_MODE] заявка не отправлена, данные формы:",
               data,
             );
-          } else if (!ENDPOINT) {
-            const esc = (t) =>
-              String(t ?? "").replace(
-                /[&<>]/g,
-                (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c],
-              );
-            const text =
-              "<b>Новая заявка с сайта Espada</b>\n" +
-              "Имя: " +
-              esc(data.name) +
-              "\n" +
-              "Телефон: " +
-              esc(data.phone) +
-              "\n" +
-              "Связь: " +
-              esc(data.messenger) +
-              "\n";
-
-            const res = await fetch(
-              "https://api.telegram.org/bot" + TG_TOKEN + "/sendMessage",
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  chat_id: TG_CHAT,
-                  text,
-                  parse_mode: "HTML",
-                }),
-              },
-            );
-            if (!res.ok) throw new Error(res.status);
           } else {
+            // Отправляем данные на наш безопасный сервер Cloudflare
             const res = await fetch(ENDPOINT, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -496,6 +466,7 @@
             });
             if (!res.ok) throw new Error(res.status);
           }
+
           form.reset();
           status.classList.add("ok");
           status.textContent =
