@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Контакты — Espada Company</title>
+    <meta
+      name="description"
+      content="Свяжитесь с Espada Company: оставьте заявку или напишите в Telegram или MAX."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="pg pg--contacts">
+    <header class="header" id="top">
+      <a class="logo" href="index.html" aria-label="Espada Company"
+        ><span>ESPADA</span><small>COMPANY</small></a
+      >
+      <nav class="nav" id="nav" aria-label="Основная навигация">
+        <a href="services.html">Услуги</a>
+        <a href="contacts.html" class="is-active" aria-current="page"
+          >Контакты</a
+        >
+      </nav>
+      <div class="header__right">
+        <a
+          class="link-soft"
+          href="https://t.me/dimka_andriyanov"
+          target="_blank"
+          rel="noopener"
+          >Telegram</a
+        >
+        <a
+          class="link-soft"
+          href="https://max.ru/u/f9LHodD0cOJtLx2SnJakfzKmTNk9VGzfbOaN5gM4EnJE3EyiLvXxuhhUGK0"
+          target="_blank"
+          rel="noopener"
+          >MAX</a
+        >
+        <a class="btn btn--blue" href="index.html#request">Оставить заявку</a>
+      </div>
+      <button
+        class="burger"
+        id="burger"
+        aria-label="Меню"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <i></i><i></i>
+      </button>
+      <div class="mobile-menu" id="mobile-menu" hidden>
+        <a href="services.html">Услуги</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="https://t.me/dimka_andriyanov" target="_blank" rel="noopener"
+          >Telegram</a
+        >
+        <a
+          href="https://max.ru/u/f9LHodD0cOJtLx2SnJakfzKmTNk9VGzfbOaN5gM4EnJE3EyiLvXxuhhUGK0"
+          target="_blank"
+          rel="noopener"
+          >MAX</a
+        >
+        <a href="index.html#request">Оставить заявку</a>
+      </div>
+    </header>
+
+    <main class="contacts">
+      <div class="contacts__in">
+        <div class="contacts__info">
+          <p class="eyebrow">КОНТАКТЫ</p>
+          <h1>Расскажите о вашей задаче</h1>
+          <p class="contacts__lead">
+            Оставьте заявку или напишите нам напрямую в мессенджер — ответим и
+            предложим решение.
+          </p>
+          <dl class="reqs">
+            <div>
+              <dt>ПОЧТА</dt>
+              <dd class="reqs__mail">
+                <a href="mailto:espadacompany@yandex.ru"
+                  >espadacompany@yandex.ru</a
+                >
+              </dd>
+            </div>
+            <div>
+              <dt>МЕССЕНДЖЕРЫ</dt>
+              <dd class="reqs__btns">
+                <a
+                  class="btn btn--outline"
+                  href="https://t.me/dimka_andriyanov"
+                  target="_blank"
+                  rel="noopener"
+                  >Telegram</a
+                >
+                <a
+                  class="btn btn--outline"
+                  href="https://max.ru/u/f9LHodD0cOJtLx2SnJakfzKmTNk9VGzfbOaN5gM4EnJE3EyiLvXxuhhUGK0"
+                  target="_blank"
+                  rel="noopener"
+                  >MAX</a
+                >
+              </dd>
+            </div>
+            <div>
+              <dt>РЕКВИЗИТЫ</dt>
+              <dd class="reqs__legal">
+                <span>Андриянов Дмитрий Станиславович</span
+                ><span>ИНН: 231526186570</span>
+              </dd>
+            </div>
+          </dl>
+        </div>
+        <form
+          class="form contact-card"
+          data-form
+          data-success="thanks.html"
+          novalidate
+        >
+          <div class="contact-card__top">
+            <h2>Оставить заявку</h2>
+            <p>
+              Свяжемся в выбранном мессенджере и подберем решение для Вашей
+              задачи.
+            </p>
+          </div>
+          <label class="field"
+            ><span>Имя *</span
+            ><input
+              name="name"
+              type="text"
+              placeholder="Как к вам обращаться"
+              required
+              autocomplete="name"
+          /></label>
+          <label class="field"
+            ><span>Номер телефона *</span
+            ><span class="phone"
+              ><b>+7</b
+              ><input
+                name="phone"
+                type="tel"
+                placeholder="918 111 11 11"
+                required
+                autocomplete="tel"
+                inputmode="tel"
+                data-phone /></span
+          ></label>
+          <fieldset class="radios">
+            <legend>Удобный мессенджер *</legend>
+            <label
+              ><input
+                type="radio"
+                name="messenger"
+                value="Telegram"
+                checked
+              /><span>Telegram</span></label
+            >
+            <label
+              ><input type="radio" name="messenger" value="MAX" /><span
+                >MAX</span
+              ></label
+            >
+          </fieldset>
+          <button class="btn btn--blue btn--block" type="submit">
+            Отправить заявку
+          </button>
+          <label class="consent"
+            ><input type="checkbox" name="consent" required /><span
+              >Я даю
+              <a href="privacy.html#soglasie"
+                >согласие на обработку персональных данных</a
+              >
+              и принимаю <a href="privacy.html">политику конфиденциальности</a>.
+              Все поля обязательны к заполнению.</span
+            ></label
+          >
+          <p class="form__status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </main>
+
+    <footer class="footer footer--mini">
+      <div class="footer__strip">
+        <span>© Espada Company, <span id="year">2026</span></span>
+        <a href="privacy.html">Политика конфиденциальности</a>
+      </div>
+    </footer>
+  </body>
+</html>
