@@ -420,11 +420,10 @@
       });
     });
 
-    const ENDPOINT = ""; // TODO: адрес вашего обработчика заявок (CRM, Telegram-бот, почта), например '/api/lead'
-
-    const TG_TOKEN = "8616055292:AAH087UZIVMZPyPNTxmOpQ05fn_WDc3pRsc";
-    const TG_CHAT = "-5324436458";
-    const TEST_MODE = !ENDPOINT && !(TG_TOKEN && TG_CHAT);
+      const ENDPOINT = "https://my-bot.hellthawstar.workers.dev";
+    
+    
+    const TEST_MODE = false;
     document.querySelectorAll("[data-form]").forEach((form) => {
       const status = form.querySelector(".form__status");
       form.addEventListener("submit", async (e) => {
