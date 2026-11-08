@@ -420,9 +420,8 @@
       });
     });
 
-      const ENDPOINT = "https://my-bot.hellthawstar.workers.dev";
-    
-    
+    const ENDPOINT = "https://my-bot.hellthawstar.workers.dev";
+
     const TEST_MODE = false;
     document.querySelectorAll("[data-form]").forEach((form) => {
       const status = form.querySelector(".form__status");
@@ -667,3 +666,4 @@
     start();
   }
 })();
+//проверка
