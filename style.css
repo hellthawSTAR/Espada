@@ -3281,11 +3281,15 @@ li {
 }
 
 /* спасибо.html: адаптация под телефон */
+html:has(.pg--thanks) {
+  height: 100%;
+}
 .pg--thanks {
   display: flex;
   flex-direction: column;
+  min-height: 100%;
   min-height: 100vh;
-  min-height: 100svh;
+  min-height: 100dvh;
 }
 .pg--thanks .thanks {
   flex: 1 0 auto;
