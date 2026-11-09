@@ -3279,3 +3279,94 @@ li {
 .faq > div:nth-child(even) .glow {
   transform: translateX(-30%);
 }
+
+/* спасибо.html: адаптация под телефон */
+.pg--thanks {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+.pg--thanks .thanks {
+  flex: 1 0 auto;
+}
+@media (max-width: 767px) {
+  .thanks {
+    padding-top: 77px;
+    padding-bottom: 48px;
+  }
+  .thanks__win {
+    padding: 40px 20px 0;
+  }
+  .thanks__icon {
+    width: 96px;
+    height: 96px;
+  }
+  .thanks__tag {
+    width: auto;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2.6px;
+    margin-top: 16px;
+  }
+  .thanks h1 {
+    margin-top: 20px;
+    font-size: 32px;
+    line-height: 36px;
+    overflow-wrap: break-word;
+  }
+  .thanks__lead {
+    margin-top: 16px;
+    font-size: 15px;
+    line-height: 24px;
+  }
+  .thanks__msg,
+  .thanks__nav {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 360px;
+    gap: 10px;
+  }
+  .thanks__msg {
+    margin-top: 28px;
+  }
+  .thanks__nav {
+    margin-top: 28px;
+    padding-top: 24px;
+    flex-direction: row;
+  }
+  .thanks__msg .btn,
+  .thanks__nav .btn,
+  .thanks__msg .btn:first-child,
+  .thanks__msg .btn:last-child,
+  .thanks__nav .btn:first-child,
+  .thanks__nav .btn:last-child {
+    width: 100%;
+    padding: 0 16px;
+    white-space: nowrap;
+  }
+  .thanks__nav .btn {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .thanks__msg .btn span,
+  .thanks__msg .btn:last-child span,
+  .thanks__nav .btn span,
+  .thanks__nav .btn:first-child span,
+  .thanks__nav .btn:last-child span {
+    width: auto;
+  }
+}
+@media (max-width: 380px) {
+  .thanks h1 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  .thanks__nav {
+    flex-direction: column;
+  }
+  .thanks__nav .btn {
+    flex: none;
+  }
+}
