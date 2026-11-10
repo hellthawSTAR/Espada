@@ -3280,7 +3280,6 @@ li {
   transform: translateX(-30%);
 }
 
-/* спасибо.html: адаптация под телефон */
 html:has(.pg--thanks) {
   height: 100%;
 }

@@ -453,7 +453,7 @@
           <label
             >Связь<select id="fMsg">
               <option>Telegram</option>
-              <option>MAX</option>
+              <option>ВКонтакте</option>
             </select></label
           >
         </div>
@@ -473,14 +473,14 @@
       <form class="panel" id="impForm" hidden>
         <h2>Импорт списком</h2>
         <p class="hint" style="margin: 0">
-          Одна заявка на строку: имя, телефон, Telegram или MAX. Разделитель —
-          запятая, точка с запятой или табуляция. Так можно перенести заявки из
-          писем и сообщений.
+          Одна заявка на строку: имя, телефон, Telegram или ВКонтакте.
+          Разделитель — запятая, точка с запятой или табуляция. Так можно
+          перенести заявки из писем и сообщений.
         </p>
         <label
           >Строки<textarea
             id="impText"
-            placeholder="Анна; +7 918 111 11 11; Telegram&#10;Игорь, 9181112233, MAX"
+            placeholder="Анна; +7 918 111 11 11; Telegram&#10;Игорь, 9181112233, ВКонтакте"
           ></textarea>
         </label>
         <div class="row-actions">
@@ -846,7 +846,7 @@
               newLead(
                 p[0],
                 p[1],
-                /max/i.test(p[2] || "") ? "MAX" : "Telegram",
+                /max/i.test(p[2] || "") ? "ВКонтакте" : "Telegram",
                 p.slice(3).join(", "),
                 "Импорт",
               ),
