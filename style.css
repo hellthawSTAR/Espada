@@ -3373,3 +3373,141 @@ html:has(.pg--thanks) {
     flex: none;
   }
 }
+
+/* поле комментария к заявке (по макету) */
+.comment {
+  display: block;
+  width: 100%;
+  height: 93px;
+  padding: 10px;
+  border: 0;
+  border-radius: 18px;
+  background: rgba(233, 236, 241, 0.5);
+  font: 400 14px/27.2px var(--font);
+  color: var(--ink);
+  resize: none;
+}
+
+.comment::placeholder {
+  color: #757575;
+  opacity: 1;
+}
+
+.comment:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--blue);
+}
+
+@media (max-width: 767px) {
+  .comment {
+    height: 60px;
+    background: rgba(226, 228, 233, 0.5);
+    font: 300 12px/15px var(--font);
+  }
+
+  .comment::placeholder {
+    color: #6b7078;
+  }
+}
+
+/* частые вопросы: мобильная версия по макету */
+@media (max-width: 767px) {
+  .faq-sec {
+    width: 100%;
+    max-width: none;
+    padding: 48px 24px 48px;
+    overflow: clip;
+  }
+
+  .faq-sec::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        ellipse 360px 380px at -40px 17%,
+        rgba(77, 120, 255, 0.42),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 320px 340px at 108% 47%,
+        rgba(77, 120, 255, 0.4),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 340px 380px at -30px 88%,
+        rgba(77, 120, 255, 0.36),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 320px 300px at 108% 98%,
+        rgba(77, 120, 255, 0.28),
+        transparent 70%
+      );
+  }
+
+  .faq .glow {
+    display: none;
+  }
+
+  .faq {
+    margin-top: 24px;
+    gap: 24px;
+  }
+
+  .faq > div,
+  .faq > div:nth-child(odd) {
+    width: 100%;
+    margin: 0;
+    gap: 12px;
+    align-items: flex-start;
+    text-align: left;
+    padding: 20.8px 0 0;
+  }
+
+  .faq > div:nth-child(2) {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .faq > div::before,
+  .faq > div::after,
+  .faq > div:nth-child(odd)::before,
+  .faq > div:nth-child(odd)::after {
+    top: 0;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 0.8px;
+    transform-origin: left center;
+  }
+
+  .faq > div::after,
+  .faq > div:nth-child(odd)::after {
+    height: 2px;
+    transform: scaleX(0);
+  }
+
+  .js .faq > div:not(.in)::before {
+    transform: scaleX(0);
+  }
+
+  .faq h3 {
+    font-size: 24px;
+    line-height: 39.1px;
+  }
+
+  .faq p {
+    font-size: 16px;
+    line-height: 27.2px;
+  }
+}
+
+@media (max-width: 767px) and (hover: hover) {
+  .faq > div:hover::after {
+    transform: scaleX(1);
+  }
+}
