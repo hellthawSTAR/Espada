@@ -3374,6 +3374,7 @@ html:has(.pg--thanks) {
   }
 }
 
+
 /* поле комментария к заявке (по макету) */
 .comment {
   display: block;
@@ -3426,26 +3427,10 @@ html:has(.pg--thanks) {
     z-index: -1;
     pointer-events: none;
     background:
-      radial-gradient(
-        ellipse 360px 380px at -40px 17%,
-        rgba(77, 120, 255, 0.42),
-        transparent 70%
-      ),
-      radial-gradient(
-        ellipse 320px 340px at 108% 47%,
-        rgba(77, 120, 255, 0.4),
-        transparent 70%
-      ),
-      radial-gradient(
-        ellipse 340px 380px at -30px 88%,
-        rgba(77, 120, 255, 0.36),
-        transparent 70%
-      ),
-      radial-gradient(
-        ellipse 320px 300px at 108% 98%,
-        rgba(77, 120, 255, 0.28),
-        transparent 70%
-      );
+      radial-gradient(ellipse 360px 380px at -40px 17%, rgba(77, 120, 255, 0.42), transparent 70%),
+      radial-gradient(ellipse 320px 340px at 108% 47%, rgba(77, 120, 255, 0.4), transparent 70%),
+      radial-gradient(ellipse 340px 380px at -30px 88%, rgba(77, 120, 255, 0.36), transparent 70%),
+      radial-gradient(ellipse 320px 300px at 108% 98%, rgba(77, 120, 255, 0.28), transparent 70%);
   }
 
   .faq .glow {
