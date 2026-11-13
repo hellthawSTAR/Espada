@@ -1,3 +1,28 @@
+/* Шрифты лежат на сайте (без Google Fonts): быстрее и не блокируют отрисовку */
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("fonts/manrope-cyrillic-wght-normal.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("fonts/manrope-latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/cormorant-garamond-latin-500-normal.woff2") format("woff2");
+}
+
 :root {
   --blue: #1f4fff;
   --blue-d: #1840d6;
@@ -2143,7 +2168,10 @@ html.lenis body {
 .doc {
   margin-top: 110px;
   background: var(--bg);
-  padding: 80px max(40px, calc((100% - 800px) / 2)) 96px;
+  padding: 80px max(40px, calc((100% - 800px) / 2)) 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
 
 .doc > *,
@@ -2157,7 +2185,6 @@ html.lenis body {
   font-weight: 700;
   letter-spacing: 2.16px;
   color: var(--blue);
-  margin-bottom: 20px;
 }
 
 .doc h1 {
@@ -2166,21 +2193,21 @@ html.lenis body {
   line-height: 58.8px;
   letter-spacing: -0.56px;
   color: var(--ink);
-  padding-bottom: 0.6px;
 }
 
 .doc__lead {
-  margin-top: 13.4px;
   font-size: 16px;
   line-height: 28px;
+  padding-bottom: 0.4px;
   color: var(--muted);
 }
 
-.doc h2 {
-  margin: 39.6px 0 13.6px;
+.doc h2,
+.doc h3 {
   font-weight: 400;
   font-size: 26px;
-  line-height: 31.2px;
+  line-height: 32px;
+  padding-bottom: 0.4px;
   color: var(--ink);
 }
 
@@ -2188,21 +2215,12 @@ html.lenis body {
 .doc li {
   font-size: 16px;
   line-height: 28px;
+  padding-bottom: 0.4px;
   color: #2b2d33;
-}
-
-.doc p:not(.doc__tag):not(.doc__lead) + p,
-.doc ul + p {
-  margin-top: 12.8px;
 }
 
 .doc ul {
   padding-left: 22px;
-  margin: 13.6px 0 0;
-}
-
-.doc p + ul {
-  margin-top: 13.6px;
 }
 
 .doc p.doc__gap {
@@ -2210,25 +2228,25 @@ html.lenis body {
 }
 
 .doc__consent {
-  margin-top: 71.6px;
-  padding-top: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 40px;
   border-top: 0.8px solid var(--ink);
 }
 
-.doc__consent .doc__tag {
-  margin-bottom: 20px;
-}
-
 .doc .doc__h2 {
-  margin: 0 0 13.5px;
   font-weight: 300;
   font-size: 44px;
-  line-height: 47.52px;
+  line-height: 48px;
   letter-spacing: -0.44px;
+  padding-bottom: 0.54px;
 }
 
-.doc__consent p:not(.doc__tag) + p {
-  margin-top: 13.6px;
+.doc__sub {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 @media (max-width: 1100px) {
@@ -2304,15 +2322,20 @@ html.lenis body {
   }
 
   .doc {
+    margin-top: 92px;
     padding: 48px 20px 64px;
+    gap: 18px;
   }
 
   .doc h1 {
-    font-size: 36px;
-    line-height: 40px;
+    font-size: 32px;
+    line-height: 37px;
+    overflow-wrap: anywhere;
+    hyphens: auto;
   }
 
-  .doc h2 {
+  .doc h2,
+  .doc h3 {
     font-size: 22px;
     line-height: 27px;
   }
@@ -3494,5 +3517,185 @@ html:has(.pg--thanks) {
 @media (max-width: 767px) and (hover: hover) {
   .faq > div:hover::after {
     transform: scaleX(1);
+  }
+}
+
+
+/* ===== Cookie-плашка (Figma: «Espada Company — согласие на файлы cookie») ===== */
+.cookie {
+  --ck: 1;
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 9000;
+  box-sizing: border-box;
+  width: calc(1239px * var(--ck));
+  max-width: calc(100% - 24px);
+  max-height: calc(100dvh - 48px);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(10px * var(--ck));
+  padding: calc(50px * var(--ck)) calc(50px * var(--ck)) calc(50px * var(--ck)) calc(112px * var(--ck));
+  background: #fff;
+  border-radius: calc(100px * var(--ck));
+  box-shadow: 0 24px 80px rgba(11, 11, 13, 0.18), 0 0 0 0.8px #e2e4e9;
+  transform: translate(-50%, calc(100% + 40px));
+  opacity: 0;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+  scrollbar-width: none;
+}
+
+.cookie::-webkit-scrollbar {
+  display: none;
+}
+
+.cookie.is-in {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+.cookie[hidden] {
+  display: none;
+}
+
+.cookie__title {
+  align-self: stretch;
+  margin: calc(50px * var(--ck)) 0 0;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: calc(64px * var(--ck));
+  line-height: calc(96px * var(--ck));
+  color: #2a2c33;
+}
+
+.cookie__text {
+  align-self: stretch;
+  margin: 0;
+  padding: calc(30px * var(--ck)) 0;
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: calc(36px * var(--ck));
+  line-height: calc(53px * var(--ck));
+  color: #52565e;
+}
+
+.cookie__text a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.cookie__btns {
+  display: flex;
+  gap: calc(15px * var(--ck));
+  align-self: stretch;
+}
+
+.cookie__btn {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(75px * var(--ck));
+  padding: 0 calc(32px * var(--ck));
+  border-radius: calc(36px * var(--ck));
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  font-size: calc(24px * var(--ck));
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.cookie__btn--ok {
+  min-width: calc(339px * var(--ck));
+  background: var(--blue);
+  border: 0;
+  color: #fff;
+}
+
+.cookie__btn--ok:hover {
+  background: #1a43dd;
+}
+
+.cookie__btn--more {
+  min-width: calc(336px * var(--ck));
+  background: transparent;
+  border: 0.8px solid #52565e;
+  color: #52565e;
+}
+
+.cookie__btn--more:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.cookie__btn:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 1300px) {
+  .cookie {
+    --ck: 0.82;
+  }
+}
+
+@media (max-width: 1100px) {
+  .cookie {
+    --ck: 0.66;
+  }
+}
+
+@media (max-width: 900px) {
+  .cookie {
+    --ck: 0.52;
+  }
+}
+
+@media (max-width: 767px) {
+  .cookie {
+    --ck: 1;
+    bottom: 12px;
+    width: calc(100% - 24px);
+    gap: 4px;
+    padding: 28px 22px 22px;
+    border-radius: 28px;
+  }
+
+  .cookie__title {
+    margin: 0;
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .cookie__text {
+    padding: 8px 0 14px;
+    font-size: 15px;
+    line-height: 23px;
+  }
+
+  .cookie__btns {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cookie__btn {
+    width: 100%;
+    min-width: 0;
+    height: 54px;
+    padding: 0 20px;
+    border-radius: 27px;
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cookie {
+    transition: opacity 0.2s ease;
+    transform: translate(-50%, 0);
   }
 }

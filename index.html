@@ -10,13 +10,33 @@
     />
     <link rel="icon" href="favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png" />
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Manrope:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="img/favicon-192.png"
+    />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+    <link
+      rel="preload"
+      href="fonts/manrope-cyrillic-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/manrope-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/cormorant-garamond-latin-500-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
@@ -137,7 +157,14 @@
               ></label
             >
           </fieldset>
-          <textarea class="comment" name="comment" rows="3" maxlength="500" placeholder="Оставьте комментарий к заявке" aria-label="Комментарий к заявке"></textarea>
+          <textarea
+            class="comment"
+            name="comment"
+            rows="3"
+            maxlength="500"
+            placeholder="Оставьте комментарий к заявке"
+            aria-label="Комментарий к заявке"
+          ></textarea>
 
           <button class="btn btn--blue btn--block" type="submit">
             Отправить заявку
@@ -650,7 +677,14 @@
               ></label
             >
           </fieldset>
-          <textarea class="comment" name="comment" rows="3" maxlength="500" placeholder="Оставьте комментарий к заявке" aria-label="Комментарий к заявке"></textarea>
+          <textarea
+            class="comment"
+            name="comment"
+            rows="3"
+            maxlength="500"
+            placeholder="Оставьте комментарий к заявке"
+            aria-label="Комментарий к заявке"
+          ></textarea>
 
           <button class="btn btn--blue btn--block" type="submit">
             Отправить заявку
@@ -871,9 +905,12 @@
               <div class="niche__img n1">
                 <img
                   class="niche__pic"
-                  src="img/niche-auto.svg"
+                  src="img/niche-auto.webp"
                   alt=""
+                  width="762"
+                  height="400"
                   loading="lazy"
+                  decoding="async"
                 />
                 <b>01</b><small>ОСНОВНОЕ<br />НАПРАВЛЕНИЕ</small>
               </div>
@@ -889,9 +926,12 @@
               <div class="niche__img n2">
                 <img
                   class="niche__pic"
-                  src="img/niche-realty.svg"
+                  src="img/niche-realty.webp"
                   alt=""
+                  width="762"
+                  height="400"
                   loading="lazy"
+                  decoding="async"
                 />
                 <b>02</b><small>ОСНОВНОЕ<br />НАПРАВЛЕНИЕ</small>
               </div>
@@ -907,9 +947,12 @@
               <div class="niche__img n3">
                 <img
                   class="niche__pic"
-                  src="img/niche-dental.svg"
+                  src="img/niche-dental.webp"
                   alt=""
+                  width="762"
+                  height="400"
                   loading="lazy"
+                  decoding="async"
                 />
                 <b>03</b><small>ОСНОВНОЕ<br />НАПРАВЛЕНИЕ</small>
               </div>
@@ -989,7 +1032,14 @@
                 ></label
               >
             </fieldset>
-          <textarea class="comment" name="comment" rows="3" maxlength="500" placeholder="Оставьте комментарий к заявке" aria-label="Комментарий к заявке"></textarea>
+            <textarea
+              class="comment"
+              name="comment"
+              rows="3"
+              maxlength="500"
+              placeholder="Оставьте комментарий к заявке"
+              aria-label="Комментарий к заявке"
+            ></textarea>
 
             <button class="btn btn--blue btn--block" type="submit">
               Отправить заявку

@@ -229,8 +229,9 @@
       document.addEventListener("click", (e) => {
         const a = e.target.closest('a[href^="#"]');
         if (!a || a.getAttribute("href") === "#") return;
-        const target = document.querySelector(a.getAttribute("href"));
+        let target = document.querySelector(a.getAttribute("href"));
         if (!target) return;
+        if (!target.offsetHeight) target = document.querySelector(".quick") || target;
         e.preventDefault();
         lenis.scrollTo(target, { offset: -100, duration: 1.6 });
       });
@@ -446,6 +447,7 @@
           return;
         }
 
+        if (window.espadaConsent) window.espadaConsent.set("policy");
         const btn = form.querySelector("button[type=submit]");
         btn.disabled = true;
         const data = Object.fromEntries(new FormData(form));
@@ -638,3 +640,96 @@
   }
 })();
 //проверка
+
+/* Согласие: cookie «espada_consent» хранит, с чем согласился посетитель.
+   cookies=1 — принял плашку cookie, policy=1 — отметил согласие с политикой в форме,
+   v — редакция политики, ts — когда (UTC). Живёт 365 дней. */
+(function () {
+  var KEY = "espada_consent";
+  var VER = "2026-11-11";
+  var parse = function () {
+    var m = document.cookie.match(new RegExp("(?:^|; )" + KEY + "=([^;]*)"));
+    var o = {};
+    if (!m) return o;
+    decodeURIComponent(m[1])
+      .split("&")
+      .forEach(function (p) {
+        var kv = p.split("=");
+        if (kv[0]) o[kv[0]] = kv[1];
+      });
+    return o;
+  };
+  var set = function (field) {
+    var o = parse();
+    o[field] = "1";
+    o.v = VER;
+    o.ts = new Date().toISOString();
+    var val = Object.keys(o)
+      .map(function (k) {
+        return k + "=" + o[k];
+      })
+      .join("&");
+    try {
+      document.cookie =
+        KEY + "=" + encodeURIComponent(val) +
+        "; max-age=31536000; path=/; SameSite=Lax" +
+        (location.protocol === "https:" ? "; Secure" : "");
+    } catch (e) {}
+    try {
+      localStorage.setItem(KEY, val);
+    } catch (e) {}
+  };
+  window.espadaConsent = { get: parse, set: set };
+
+  var init = function () {
+    var done = parse().cookies === "1";
+    if (!done) {
+      try {
+        done = !!localStorage.getItem(KEY) && localStorage.getItem(KEY).indexOf("cookies=1") > -1;
+      } catch (e) {}
+    }
+    if (done || document.querySelector(".cookie")) return;
+    var el = document.createElement("div");
+    el.className = "cookie";
+    el.setAttribute("role", "region");
+    el.setAttribute("aria-label", "Согласие на файлы cookie");
+    el.innerHTML =
+      '<h2 class="cookie__title">Мы используем файлы cookie</h2>' +
+      '<p class="cookie__text">Технические cookie нужны, чтобы сайт работал. Аналитические помогают нам понять, как им пользуются, и включаются только с Вашего согласия. Подробности в <a href="privacy.html">политике конфиденциальности</a>.</p>' +
+      '<div class="cookie__btns">' +
+      '<button type="button" class="cookie__btn cookie__btn--ok">Принимаю</button>' +
+      '<a class="cookie__btn cookie__btn--more" href="privacy.html">Подробнее</a>' +
+      "</div>";
+    document.body.appendChild(el);
+    setTimeout(function () {
+      el.classList.add("is-in");
+    }, 700);
+    el.querySelector(".cookie__btn--ok").addEventListener("click", function () {
+      set("cookies");
+      el.classList.remove("is-in");
+      setTimeout(function () {
+        el.remove();
+      }, 800);
+    });
+  };
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+
+/* Переход по index.html#request: на телефоне блок #request скрыт, ведём к форме .quick */
+(function () {
+  if (location.hash !== "#request") return;
+  window.addEventListener("load", function () {
+    var t = document.getElementById("request");
+    if (t && t.offsetHeight) return;
+    var q = document.querySelector(".quick");
+    if (!q) return;
+    setTimeout(function () {
+      var y = q.getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }, 900);
+  });
+})();
